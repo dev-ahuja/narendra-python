@@ -10,9 +10,11 @@ s3_con_re = aws_mgm_con.resource(service_name="s3", region_name="us-east-1")
 ec2_con_re = aws_mgm_con.resource(service_name="ec2", region_name="us-east-1")
 
 '''
-response = iam_con_cli.list_users()
-
-for each_item in response['Users']:
-    print(each_item['UserName'])
+for each_item in iam_con_re.users.all():
+    print(each_item.user_name)        
 '''
-print(dir(ec2_con_re))
+
+for each_item in s3_con_re.buckets.all():
+    print(each_item.name)
+
+# Do the task for EC2
